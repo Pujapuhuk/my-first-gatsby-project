@@ -6,6 +6,7 @@ module.exports = {
   plugins: [
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
+    "gatsby-plugin-mdx",
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -16,7 +17,22 @@ module.exports = {
     {
     resolve: 'gatsby-source-datocms',
     options: {
-      "apiToken": "b1f0e42012b0613b7b8581b46aabee"
+      "apiToken": "b1f0e42012b0613b7b8581b46aabee",
+      preview: false,
+      disableLiveReload: false,
     }
-  }]
+  },
+  {
+    resolve: `gatsby-transformer-remark`,
+    options: {
+      plugins: [
+        {
+          resolve: `gatsby-remark-images`,
+          options: {
+            maxWidth: 590,
+          },
+        },
+      ],
+    },
+  },]
 };
